@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub Diff Whitespace",
+  "version": "1.0.0",
+  "description": "Automatically appends ?w=1 to GitHub diff URLs to ignore whitespace changes",
+  "permissions": [
+    "tabs",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://github.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
+
