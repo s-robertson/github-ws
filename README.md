@@ -16,6 +16,10 @@ GitHub has [seemingly refused to implement a user-level setting](https://github.
 
 ## Installation
 
+[The extension is now available on the Chrome Web Store!](https://chromewebstore.google.com/detail/github-diff-whitespace/pbhhijkidkddcnnmhmlpfdgdffmhiggd?authuser=0&hl=en)
+
+To install a local copy of the extension:
+
 1. Open Chrome and navigate to `chrome://extensions/`
 2. Enable "Developer mode" (toggle in top right)
 3. Click "Load unpacked"
