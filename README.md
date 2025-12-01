@@ -2,7 +2,9 @@
 
 Are you sick of GitHub never remembering your whitespace setting? Wish you could have whitespace changes off by default ALL THE TIME? **LOOK NO FURTHER!**
 
-This Chrome extension automatically appends `?w=1` to every GitHub diff URL so you never have to click that "Hide whitespace changes" button again. Ever. Seriously, we've got you covered.
+This browser extension automatically appends `?w=1` to every GitHub diff URL so you never have to click that "Hide whitespace changes" button again. Ever. Seriously, we've got you covered.
+
+**Available for both Chrome and Firefox!**
 
 ## Why This Extension?
 
@@ -16,20 +18,45 @@ GitHub has [seemingly refused to implement a user-level setting](https://github.
 
 ## Installation
 
+### Chrome
+
 1. Open Chrome and navigate to `chrome://extensions/`
 2. Enable "Developer mode" (toggle in top right)
 3. Click "Load unpacked"
-4. Select this directory
+4. Select the `src/chrome-addon` directory
+
+### Firefox
+
+1. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
+2. Click "Load Temporary Add-on"
+3. Navigate to the `src/firefox-addon` directory
+4. Select the `manifest.json` file
 
 ## Usage
 
 Just install it and forget about it! The extension works automatically with zero configuration. Links get modified when you click them, and navigation gets redirected. It's like having a personal assistant that really, really cares about whitespace (probably more than GitHub does).
 
+## Repository Structure
+
+This repository contains two browser extensions with identical functionality:
+
+```
+src/
+  chrome-addon/     - Chrome extension (Manifest V3)
+  firefox-addon/    - Firefox extension (Manifest V3)
+```
+
 ## Development
 
-Built with Manifest V3 because we're modern like that. The extension consists of:
+Both extensions are built with Manifest V3. Each extension consists of:
 - `manifest.json` - The blueprint (extension configuration)
 - `content.js` - The click interceptor (catches those diff links)
 - `background.js` - The redirect master (handles navigation like a boss)
+
+**Chrome-specific:**
 - `popup.html/js/css` - The popup UI (mostly just for show, but it's nice to have)
+
+**Firefox-specific:**
+- Uses `browser.*` API namespace instead of `chrome.*`
+- Background script uses `background.scripts` instead of `service_worker`
 
