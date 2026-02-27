@@ -27,7 +27,7 @@
   function isGitHubDiffUrl(url) {
     try {
       const urlObj = new URL(url);
-      return urlObj.hostname === 'github.com' && urlObj.pathname.includes('/files');
+      return urlObj.hostname === 'github.com' && (urlObj.pathname.includes('/files') || urlObj.pathname.includes('/changes'));
     } catch (e) {
       return false;
     }

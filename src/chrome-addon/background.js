@@ -23,7 +23,7 @@ function addWhitespaceParam(url) {
 function isGitHubDiffUrl(url) {
   try {
     const urlObj = new URL(url);
-    return urlObj.hostname === 'github.com' && urlObj.pathname.includes('/files');
+    return urlObj.hostname === 'github.com' && (urlObj.pathname.includes('/files') || urlObj.pathname.includes('/changes'));
   } catch (e) {
     return false;
   }
@@ -67,7 +67,8 @@ chrome.webNavigation.onCommitted.addListener((details) => {
   });
 }, {
   url: [
-    { hostContains: 'github.com', pathContains: '/files' }
+    { hostContains: 'github.com', pathContains: '/files' },
+    { hostContains: 'github.com', pathContains: '/changes' }
   ]
 });
 
